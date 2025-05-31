@@ -61,11 +61,11 @@ ${html}
 
 export async function extractDescriptionFromHtml(html) {
   try {
-    const htmlToSend = html.length > 8000 ? html.slice(0, 8000) : html;
+    const MAX = 8000;
+    const htmlToSend = html.length > MAX ? html.slice(0, MAX) : html;
     const prompt = `
 Given the following HTML from a product detail section of an eBay listing,
 extract the item description provided by the seller. If there is no seller-written description, summarize the product specifications or item specifics as a readable description.
-if empty, return a single dash "-".
 
 Ignore any seller policy, timestamps, or shipping info.
 
